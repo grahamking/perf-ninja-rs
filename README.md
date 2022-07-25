@@ -20,17 +20,16 @@ Each lab is a cargo project. In brackets are the mappings to the C++ version.
 
 You will only need to touch the code in `lib.rs`. The unit test, the benchmark and main all call that code. The benchmark uses [criterion](https://docs.rs/criterion/latest/criterion/) to produce accurate numbers. The downside is that if you analyse that benchmark, you're also analysing criterion. Hence we provide a simple `main` to analyse instead.
 
-## Work step
+## Work loop
 
 1. Improve the code in `lib.rs`.
 1. Check it's still correct: `cargo test`.
 1. Run the benchmark to see how you're doing: `runperf ~/.cargo/bin/cargo criterion bench --lab` (runperf loses $PATH, hence cargo full path).
 1. Build main: `cargo build --release`
-1. Analyse it to find bottlenecks - the videos often walk through this part. e.g:
-  - `runperf perf stat ./target/release/vectorization_1`
-  - `runperf perf record ./target/release/vectorization_1` then `perf report -Mintel`.
-  - `runperf ~/src/pmu-tools/toplev --core S0-C0 -l1 -v --no-desc target/release/vectorization_1` (then try with `-l2` instead of `-l1`)
-1. Goto 1
+1. Analyse it to find bottlenecks - the videos often walk through this part, then go back to step 1. e.g:
+   - `runperf perf stat ./target/release/vectorization_1`
+   - `runperf perf record ./target/release/vectorization_1` then `perf report -Mintel`.
+   - `runperf ~/src/pmu-tools/toplev --core S0-C0 -l1 -v --no-desc target/release/vectorization_1` (then try with `-l2` instead of `-l1`)
 
 ## Misc / Tips
 

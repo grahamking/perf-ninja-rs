@@ -116,5 +116,5 @@ pub fn init() -> (Vec<Sequence>, Vec<Sequence>) {
         sequences
     };
 
-    return (generate_sequences(), generate_sequences());
+    (generate_sequences(), generate_sequences())
 }
