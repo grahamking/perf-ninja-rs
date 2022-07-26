@@ -1,8 +1,21 @@
-Port of https://github.com/dendibakh/perf-ninja
+Rust port of the exercises in https://github.com/dendibakh/perf-ninja
 
 You will need to watch the videos at the parent project, that's the course. To do the course in Rust, use this code instead of the parent C++ code.
 
 I recommend reading Denis' free ebook [Performance Analysis and Tuning on Modern CPUs](https://book.easyperf.net/perf_book) as you do the course. Things can get a little confusing otherwise, and the book all by itself is excellent; real practical performance tuning advice from an expert.
+
+## Lab assignments ported so far
+
+* [Core Bound](labs/core_bound):
+  * [Vectorization 1](labs/core_bound/vectorization_1)
+  * [Vectorization 2](labs/core_bound/vectorization_2)
+  * [Function Inlining](labs/core_bound/function_inlining_1)
+  * [Dependency Chains 1](labs/core_bound/dep_chains_1)
+  * [Compiler Intrinsics 1](labs/core_bound/compiler_intrinsics_1)
+* Misc:
+  * [Warmup](labs/misc/warmup)
+
+Note that Rust solves some of these labs all by itself (e.g. function_inlining). You might not hit the same performance problems described in the course videos - but hopefully you'll learn something in finding out if that's the case or not.
 
 ## Setup
 
@@ -16,7 +29,7 @@ You need:
 
 Each lab is a cargo project. In brackets are the mappings to the C++ version.
 
- - `src/lib.rs`: The code you need to optimize (solution.cpp, solution.h)
+ - `src/lib.rs`: The code you need to optimize (solution.cpp, solution.h, init.cpp)
  - `src/main.rs`: A unit test (validate.cpp) to check your code still works, and a simple `main` function for analysis.
  - `benches/lab.rs`: The benchmark (bench.cpp). You need to make this faster.
 
@@ -50,6 +63,8 @@ The `:P` denotes a [Precise Event](https://www.intel.com/content/www/us/en/devel
 ## Thanks
 
 Thanks to my employer Dropbox for supporting this project during Hack Week 2022.
+
+If this course is useful to you please consider supporting the parent project's Patreon or GitHub Sponsors.
 
 ## License
 
