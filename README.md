@@ -2,6 +2,8 @@ Port of https://github.com/dendibakh/perf-ninja
 
 You will need to watch the videos at the parent project, that's the course. To do the course in Rust, use this code instead of the parent C++ code.
 
+I recommend reading Denis' free ebook [Performance Analysis and Tuning on Modern CPUs](https://book.easyperf.net/perf_book) as you do the course. Things can get a little confusing otherwise, and the book all by itself is excellent; real practical performance tuning advice from an expert.
+
 ## Setup
 
 You need:
@@ -33,11 +35,17 @@ You will only need to touch the code in `lib.rs`. The unit test, the benchmark a
 
 ## Misc / Tips
 
-Optimize Rust for your CPU, and include frame pointers: `-Ctarget-cpu=native -Cforce-frame-pointers=yes`
+Optimize Rust for your CPU, and include frame pointers: `-Ctarget-cpu=native -Cforce-frame-pointers=yes`.
 
 Have `perf report` display the call graph: `perf record --call-graph fp <prog>`. You need to build with `force-frame-pointers` (above in RUSTFLAGS).
 
-Show assembly: `objdump -Mintel -d target/release/vectorization_1`
+Show assembly: `objdump -Mintel -d target/release/vectorization_1`.
+
+By default `perf record` uses the `cycles` events (number of CPU cycles). If you want to dig into a specific event provide that directly to perf:
+ - Branch misses (aka bad speculation): `runperf perf record --call-graph fp --event=branch-misses:P <prog>`
+ - Main memory load: `--event=cycle_activity.stalls_l3_miss:P` (An L3 cache miss means we have to go to main memory)
+
+The `:P` denotes a [Precise Event](https://www.intel.com/content/www/us/en/develop/documentation/vtune-help/top/analyze-performance/custom-analysis/custom-analysis-options/hardware-event-list/precise-events.html).
 
 ## Thanks
 
