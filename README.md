@@ -42,8 +42,8 @@ Have `perf report` display the call graph: `perf record --call-graph fp <prog>`.
 Show assembly: `objdump -Mintel -d target/release/vectorization_1 | rustfilt`. (rustfilt de-mangles Rust symbols: `cargo install rustfilt`).
 
 By default `perf record` uses the `cycles` events (number of CPU cycles). If you want to dig into a specific event provide that directly to perf:
- - Branch misses (aka bad speculation): `runperf perf record --call-graph fp --event=branch-misses:P <prog>`
- - Main memory load: `--event=cycle_activity.stalls_l3_miss:P` (An L3 cache miss means we have to go to main memory)
+ - Branch misses (bad speculation): `runperf perf record --call-graph fp --event=branch-misses:P <prog>`
+ - Main memory load (backend bound): `--event=cycle_activity.stalls_l3_miss:P` (An L3 cache miss means we have to go to main memory)
 
 The `:P` denotes a [Precise Event](https://www.intel.com/content/www/us/en/develop/documentation/vtune-help/top/analyze-performance/custom-analysis/custom-analysis-options/hardware-event-list/precise-events.html).
 
