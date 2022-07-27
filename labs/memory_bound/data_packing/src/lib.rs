@@ -3,7 +3,7 @@
 
 use rand::prelude::*;
 
-use std::cmp::{PartialOrd, Ordering, Ord};
+use std::cmp::{Ord, Ordering, PartialOrd};
 
 mod init;
 pub use init::{create_entry, init};
@@ -11,17 +11,17 @@ pub use init::{create_entry, init};
 // Assume those constants never change
 pub const N: usize = 10_000;
 pub const MIN_RANDOM: i32 = 0;
-pub const MAX_RANDOM: i32= 100;
+pub const MAX_RANDOM: i32 = 100;
 
 // FIXME: this data structure can be reduced in size
 #[repr(C)]
 #[derive(Debug, Copy, Clone, Default)]
 pub struct S {
-  pub i: i32,
-  pub l: i64,
-  pub s: i16,
-  pub d: f64,
-  pub b: bool,
+    pub i: i32,
+    pub l: i64,
+    pub s: i16,
+    pub d: f64,
+    pub b: bool,
 }
 
 // C++ version overloads '<' operator like this:
@@ -34,9 +34,9 @@ impl PartialOrd for S {
     }
 }
 impl Ord for S {
-        fn cmp(&self, other: &Self) -> Ordering {
-            self.i.cmp(&other.i)
-        }
+    fn cmp(&self, other: &Self) -> Ordering {
+        self.i.cmp(&other.i)
+    }
 }
 impl PartialEq for S {
     fn eq(&self, other: &Self) -> bool {
