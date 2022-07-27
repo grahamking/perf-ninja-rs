@@ -1,3 +1,5 @@
+# Rust labs for Performance Ninja Class
+
 Rust port of the exercises in https://github.com/dendibakh/perf-ninja
 
 You will need to watch the videos at the parent project, that's the course. To do the course in Rust, use this code instead of the parent C++ code.
@@ -12,10 +14,11 @@ I recommend reading Denis' free ebook [Performance Analysis and Tuning on Modern
   * [Function Inlining](labs/core_bound/function_inlining_1)
   * [Dependency Chains 1](labs/core_bound/dep_chains_1)
   * [Compiler Intrinsics 1](labs/core_bound/compiler_intrinsics_1)
+  * [Compiler Intrinsics 2](labs/core_bound/compiler_intrinsics_2)
 * Misc:
   * [Warmup](labs/misc/warmup)
 
-Note that Rust solves some of these labs all by itself (e.g. function_inlining). You might not hit the same performance problems described in the course videos - but hopefully you'll learn something in finding out if that's the case or not.
+Note that Rust solves some of these labs all by itself (e.g. `function_inlining`). You might not hit the same performance problems described in the course videos, or you might only hit them in debug mode. Hopefully you'll learn something in finding out if that's the case or not.
 
 ## Setup
 

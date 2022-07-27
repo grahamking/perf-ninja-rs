@@ -15,12 +15,12 @@ pub struct List {
 }
 
 pub fn get_sum_of_digits(mut n: u32) -> u32 {
-  let mut sum = 0u32;
-  while n != 0 {
-    sum += n % 10;
-    n /= 10;
-  }
-  sum
+    let mut sum = 0u32;
+    while n != 0 {
+        sum += n % 10;
+        n /= 10;
+    }
+    sum
 }
 
 // Task: lookup all the values from l2 in l1.
@@ -36,22 +36,22 @@ pub fn get_sum_of_digits(mut n: u32) -> u32 {
 /// # Safety
 /// Basic linked-list iteration, what could possibly go wrong?
 pub unsafe fn solution(mut l1: *const List, mut l2: *const List) -> u32 {
-  let mut ret_val = 0u32;
+    let mut ret_val = 0u32;
 
-  let head2 = l2;
-  // O(N^2) algorithm:
-  while !l1.is_null() {
-    let v = (*l1).value;
-    l2 = head2;
-    while !l2.is_null() {
-      if (*l2).value == v {
-        ret_val += get_sum_of_digits(v);
-        break;
-      }
-      l2 = (*l2).next;
+    let head2 = l2;
+    // O(N^2) algorithm:
+    while !l1.is_null() {
+        let v = (*l1).value;
+        l2 = head2;
+        while !l2.is_null() {
+            if (*l2).value == v {
+                ret_val += get_sum_of_digits(v);
+                break;
+            }
+            l2 = (*l2).next;
+        }
+        l1 = (*l1).next;
     }
-    l1 = (*l1).next;
-  }
 
-  ret_val
+    ret_val
 }

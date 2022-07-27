@@ -1,0 +1,13 @@
+[package]
+name = "compiler_intrinsics_2"
+version = "0.1.0"
+edition = "2021"
+
+[[bench]]
+name = "lab"
+harness = false
+
+[dependencies]
+
+[dev-dependencies]
+criterion = "0.3.6"
