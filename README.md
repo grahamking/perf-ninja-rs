@@ -15,6 +15,8 @@ I recommend reading Denis' free ebook [Performance Analysis and Tuning on Modern
   * [Dependency Chains 1](labs/core_bound/dep_chains_1)
   * [Compiler Intrinsics 1](labs/core_bound/compiler_intrinsics_1)
   * [Compiler Intrinsics 2](labs/core_bound/compiler_intrinsics_2)
+* [Memory Bound](labs/memory_bound):
+  * [Data Packing](labs/memory_bound/data_packing)
 * Misc:
   * [Warmup](labs/misc/warmup)
 
