@@ -1,0 +1,11 @@
+[package]
+name = "loop_tiling"
+version = "0.1.0"
+edition = "2021"
+
+[dev-dependencies]
+criterion = "0.3.6"
+
+[[bench]]
+name = "lab"
+harness = false
