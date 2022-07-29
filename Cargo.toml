@@ -1,3 +1,8 @@
+
+# This allows `objdump -S` to show us the source code. It doesn't impact performance.
+[profile.release]
+debug = true
+
 [workspace]
 members = [
   "labs/misc/warmup",

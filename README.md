@@ -68,7 +68,9 @@ Optimize Rust for your CPU, and include frame pointers: `-Ctarget-cpu=native -Cf
 
 Have `perf report` display the call graph: `perf record --call-graph fp <prog>`. You need to build with `force-frame-pointers` (above in RUSTFLAGS).
 
-Show assembly: `objdump -Mintel -d target/release/vectorization_1 | rustfilt`. (rustfilt de-mangles Rust symbols: `cargo install rustfilt`).
+Show assembly: `objdump -Mintel -S -d target/release/vectorization_1 | rustfilt`.
+ - `rustfilt` de-mangles Rust symbols: `cargo install rustfilt`
+ - `-S` includes source code in the output
 
 By default `perf record` uses the `cycles` events (number of CPU cycles). If you want to dig into a specific event provide that directly to perf:
  - Branch misses (bad speculation): `runperf perf record --call-graph fp --event=branch-misses:P <prog>`
