@@ -28,6 +28,8 @@ I recommend reading Denis' free ebook [Performance Analysis and Tuning on Modern
   * [Rust Virtual Calls](labs/bad_speculation/virtual_call_mispredict)
 * Misc:
   * [Warmup](labs/misc/warmup)
+  * LTO: TODO
+  * PGO: TODO
 
 Note that Rust solves some of these labs all by itself (e.g. `function_inlining`). You might not hit the same performance problems described in the course videos, or you might only hit them in debug mode. Hopefully you'll learn something in finding out if that's the case or not.
 
