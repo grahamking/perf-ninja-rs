@@ -1,2 +1,2 @@
-TODO: `cargo test` has a stack overflow currently. The criterion benchmark and `cargo run --release` work.
+This one is big and slow, so use release mode: `cargo test --release` and `cargo run --release`.
 

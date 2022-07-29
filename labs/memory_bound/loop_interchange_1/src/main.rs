@@ -3,9 +3,9 @@
 use loop_interchange_1::{init, power, zero, N};
 
 fn main() {
-    let mut matrix_a = Box::new([[0.0f32; N]; N]);
+    let mut matrix_a = vec![vec![0.0f32; N]; N];
     init(&mut matrix_a);
-    let mut matrix_b = Box::new([[0.0f32; N]; N]);
+    let mut matrix_b = vec![vec![0.0f32; N]; N];
     zero(&mut matrix_b);
 
     for _ in 0..5 {
@@ -23,10 +23,10 @@ mod tests {
         const K: i32 = 15;
         const K1: i32 = 5;
 
-        let mut a = Box::new([[0.0f32; N]; N]);
-        let mut b = Box::new([[0.0f32; N]; N]);
-        let mut c = Box::new([[0.0f32; N]; N]);
-        let mut d = Box::new([[0.0f32; N]; N]);
+        let mut a = vec![vec![0.0f32; N]; N];
+        let mut b = vec![vec![0.0f32; N]; N];
+        let mut c = vec![vec![0.0f32; N]; N];
+        let mut d = vec![vec![0.0f32; N]; N];
 
         init(&mut a);
         zero(&mut b);
@@ -34,7 +34,7 @@ mod tests {
         identity(&mut d);
         {
             multiply(&mut b, &a, &d);
-            assert!(equals(&*b, &*a));
+            assert!(equals(&b, &a));
         }
         {
             multiply(&mut b, &a, &a);
