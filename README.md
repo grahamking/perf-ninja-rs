@@ -20,7 +20,7 @@ I recommend reading Denis' free ebook [Performance Analysis and Tuning on Modern
   * [Loop Interchange 1](labs/memory_bound/loop_interchange_1)
   * [Loop Interchange 2](labs/memory_bound/loop_interchange_2)
   * [Loop Tiling](labs/memory_bound/loop_tiling_1)
-  * SW memory prefetching TODO
+  * [SW memory prefetching](labs/memory_bound/swmem_prefetch_1)
   * [False Sharing](labs/memory_bound/false_sharing_1)
 * [Bad Speculation](labs/bad_speculation):
   * [Conditional Store](labs/bad_speculation/conditional_store_1)

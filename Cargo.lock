@@ -569,6 +569,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "swmem_prefetch_1"
+version = "0.1.0"
+dependencies = [
+ "criterion",
+ "rand",
+]
+
+[[package]]
 name = "syn"
 version = "1.0.98"
 source = "registry+https://github.com/rust-lang/crates.io-index"
