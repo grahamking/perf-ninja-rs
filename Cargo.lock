@@ -307,6 +307,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "lookup_tables_1"
+version = "0.1.0"
+dependencies = [
+ "criterion",
+ "rand",
+]
+
+[[package]]
 name = "loop_interchange_1"
 version = "0.1.0"
 dependencies = [

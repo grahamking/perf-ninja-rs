@@ -14,6 +14,7 @@ pub fn solution(data: &[u32], thread_count: usize) -> i32 {
     }
     let chunks = data.chunks(data.len() / thread_count);
     thread::scope(|s| {
+        // C++ uses `#pragma omp for` which splits into chunks, just like this
         for (idx, chunk) in chunks.enumerate() {
             let target_acc = accumulators[idx % thread_count].clone();
             s.spawn(move || {

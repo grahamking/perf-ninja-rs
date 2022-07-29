@@ -24,6 +24,7 @@ I recommend reading Denis' free ebook [Performance Analysis and Tuning on Modern
   * [False Sharing](labs/memory_bound/false_sharing_1)
 * [Bad Speculation](labs/bad_speculation):
   * [Conditional Store](labs/bad_speculation/conditional_store_1)
+  * [Replacing Branches With Lookup Tables](labs/bad_speculation/lookup_tables_1)
 * Misc:
   * [Warmup](labs/misc/warmup)
 
