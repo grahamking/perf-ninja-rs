@@ -82,6 +82,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "conditional_store_1"
+version = "0.1.0"
+dependencies = [
+ "criterion",
+ "rand",
+]
+
+[[package]]
 name = "criterion"
 version = "0.3.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
