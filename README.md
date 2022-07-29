@@ -74,6 +74,10 @@ By default `perf record` uses the `cycles` events (number of CPU cycles). If you
 
 The `:P` denotes a [Precise Event](https://www.intel.com/content/www/us/en/develop/documentation/vtune-help/top/analyze-performance/custom-analysis/custom-analysis-options/hardware-event-list/precise-events.html).
 
+## Notes on the port
+
+Best effort was made to keep the code as close to the C++ original as possible. That meant resisting iterator chaining, using C++ names (e.g. `ClassA`), and even sometimes ignoring `clippy`. The hope is that this makes it easier to follow along with the original videos.
+
 ## Thanks
 
 Thanks to my employer Dropbox for supporting this project during Hack Week 2022.

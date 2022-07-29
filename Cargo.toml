@@ -1,5 +1,6 @@
 [workspace]
 members = [
+  "labs/misc/warmup",
   "labs/core_bound/compiler_intrinsics_1",
   "labs/core_bound/compiler_intrinsics_2",
   "labs/core_bound/dep_chains_1",

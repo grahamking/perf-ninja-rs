@@ -10,11 +10,12 @@ fn bench1(c: &mut Criterion) {
         arr[i] = i as i32 + 1i32;
     }
 
-    let mut result = 0;
-
     // benchmark
     c.bench_function("solution 1000", |b| {
-        b.iter(|| result = solution(black_box(&arr), N))
+        b.iter(|| {
+            let result = solution(&arr, N);
+            black_box(result);
+        });
     });
 }
 
