@@ -20,6 +20,8 @@ I recommend reading Denis' free ebook [Performance Analysis and Tuning on Modern
   * [Loop Interchange 1](labs/memory_bound/loop_interchange_1)
   * [Loop Interchange 2](labs/memory_bound/loop_interchange_2)
   * [Loop Tiling](labs/memory_bound/loop_tiling_1)
+
+  * [False Sharing](labs/memory_bound/false_sharing_1)
 * Misc:
   * [Warmup](labs/misc/warmup)
 

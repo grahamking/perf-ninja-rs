@@ -207,6 +207,13 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3f107b87b6afc2a64fd13cac55fe06d6c8859f12d4b14cbcdd2c67d0976781be"
 
 [[package]]
+name = "false_sharing_1"
+version = "0.1.0"
+dependencies = [
+ "criterion",
+]
+
+[[package]]
 name = "function_inlining_1"
 version = "0.1.0"
 dependencies = [
@@ -297,6 +304,13 @@ version = "0.1.0"
 dependencies = [
  "criterion",
  "rand",
+]
+
+[[package]]
+name = "loop_interchange_2"
+version = "0.1.0"
+dependencies = [
+ "criterion",
 ]
 
 [[package]]
