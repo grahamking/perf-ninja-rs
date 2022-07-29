@@ -9,7 +9,7 @@ members = [
   "labs/memory_bound/data_packing",
   "labs/memory_bound/loop_interchange_1",
   "labs/memory_bound/loop_interchange_2",
-  "labs/memory_bound/loop_tiling",
+  "labs/memory_bound/loop_tiling_1",
   "labs/memory_bound/false_sharing_1",
   "labs/bad_speculation/conditional_store_1",
 ]

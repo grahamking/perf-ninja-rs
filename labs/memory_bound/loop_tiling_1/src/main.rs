@@ -1,4 +1,4 @@
-use loop_tiling::{init_matrix, original_solution, solution, MatrixOfDoubles};
+use loop_tiling_1::{init_matrix, original_solution, solution, MatrixOfDoubles};
 
 fn main() -> Result<(), &'static str> {
     const N: usize = 2001;

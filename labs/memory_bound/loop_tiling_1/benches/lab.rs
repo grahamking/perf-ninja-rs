@@ -1,6 +1,6 @@
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
 
-use loop_tiling::{init_matrix, original_solution, solution};
+use loop_tiling_1::{init_matrix, original_solution, solution};
 
 fn bench_loop_tiling(c: &mut Criterion) {
     let mut group = c.benchmark_group("loop_tiling");

@@ -1,5 +1,5 @@
 [package]
-name = "loop_tiling"
+name = "loop_tiling_1"
 version = "0.1.0"
 edition = "2021"
 
