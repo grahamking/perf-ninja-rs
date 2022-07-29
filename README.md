@@ -25,6 +25,7 @@ I recommend reading Denis' free ebook [Performance Analysis and Tuning on Modern
 * [Bad Speculation](labs/bad_speculation):
   * [Conditional Store](labs/bad_speculation/conditional_store_1)
   * [Replacing Branches With Lookup Tables](labs/bad_speculation/lookup_tables_1)
+  * [Rust Virtual Calls](labs/bad_speculation/virtual_call_mispredict)
 * Misc:
   * [Warmup](labs/misc/warmup)
 

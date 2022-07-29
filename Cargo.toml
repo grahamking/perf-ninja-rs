@@ -13,4 +13,5 @@ members = [
   "labs/memory_bound/false_sharing_1",
   "labs/bad_speculation/conditional_store_1",
   "labs/bad_speculation/lookup_tables_1",
+  "labs/bad_speculation/virtual_call_mispredict",
 ]

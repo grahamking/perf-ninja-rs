@@ -627,6 +627,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "virtual_call_mispredict"
+version = "0.1.0"
+dependencies = [
+ "criterion",
+ "rand",
+]
+
+[[package]]
 name = "walkdir"
 version = "2.3.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
