@@ -14,11 +14,11 @@ if (s == '\n') {
 pub fn solution(input_contents: &str) -> u32 {
     let mut longest_line = 0;
     let mut cur_line_length = 0;
+
     for s in input_contents.chars() {
-        longest_line = max(cur_line_length, longest_line);
         cur_line_length = if s == '\n' { 0 } else { cur_line_length + 1 };
+        longest_line = max(cur_line_length, longest_line);
     }
 
-    // if no end-of-line in the end
-    max(cur_line_length, longest_line)
+    longest_line
 }
