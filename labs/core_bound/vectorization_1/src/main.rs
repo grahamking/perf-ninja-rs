@@ -1,10 +1,9 @@
 #![feature(bench_black_box)]
 use vectorization_1::{compute_alignment, init};
 
-const N: usize = 1000;
 fn main() {
     let (sequences1, sequences2) = init();
-    for _ in 0..N {
+    for _ in 0..100 {
         let result = compute_alignment(&sequences1, &sequences2);
         std::hint::black_box(result);
     }

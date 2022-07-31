@@ -11,14 +11,14 @@ I recommend reading Denis' free ebook [Performance Analysis and Tuning on Modern
 * [Core Bound](labs/core_bound):
   * [Vectorization 1](labs/core_bound/vectorization_1)
   * [Vectorization 2](labs/core_bound/vectorization_2)
-  * [Function Inlining](labs/core_bound/function_inlining_1)
+  * [Function Inlining](labs/core_bound/function_inlining_1): Not relevant in Rust because of static linking, see the README.
   * [Dependency Chains 1](labs/core_bound/dep_chains_1)
   * [Compiler Intrinsics 1](labs/core_bound/compiler_intrinsics_1)
   * [Compiler Intrinsics 2](labs/core_bound/compiler_intrinsics_2)
 * [Memory Bound](labs/memory_bound):
   * [Data Packing](labs/memory_bound/data_packing)
-  * [Loop Interchange 1](labs/memory_bound/loop_interchange_1)
-  * [Loop Interchange 2](labs/memory_bound/loop_interchange_2)
+  * [Loop Interchange 1](labs/memory_bound/loop_interchange_1): Rust version does not appear to be memory bound, see the README.
+  * [Loop Interchange 2](labs/memory_bound/loop_interchange_2): Rust version does not appear to be memory bound, see the README.
   * [Loop Tiling](labs/memory_bound/loop_tiling_1)
   * [SW memory prefetching](labs/memory_bound/swmem_prefetch_1)
   * [False Sharing](labs/memory_bound/false_sharing_1)
@@ -31,7 +31,14 @@ I recommend reading Denis' free ebook [Performance Analysis and Tuning on Modern
   * LTO: TODO
   * PGO: TODO
 
-Note that Rust solves some of these labs all by itself (e.g. `function_inlining`). You might not hit the same performance problems described in the course videos, or you might only hit them in debug mode. Hopefully you'll learn something in finding out if that's the case or not.
+The three labs with comments above do not match their C++ version. Loop Interchange 1 and 2 probably need changing.
+
+These three labs match the bottlenecks of their C++ versions (under Clang 14), but have different bottlenecks than indicated. This is probably because Rust uses Clang 14 but the labs were built for Clang 12:
+ - Core Bound / Vectorization 1: Use debug mode, that has the correct bottleneck.
+ - Core Bound / Dependency Chains 1: Is memory bound, not core bound.
+ - Memory Bound / SW memory prefetching: Not memory bound, bottleneck seems to be branch prediction.
+
+Aside from those differences, the Rust code should serve you well in your studies to become a performance ninja!
 
 ## Setup
 
@@ -58,9 +65,11 @@ You will only need to touch the code in `lib.rs`. The unit test, the benchmark a
 1. Run the benchmark to see how you're doing: `runperf ~/.cargo/bin/cargo criterion bench --lab` (runperf loses $PATH, hence cargo full path).
 1. Build main: `cargo build --release`
 1. Analyse it to find bottlenecks - the videos often walk through this part, then go back to step 1. e.g:
-   - `runperf perf stat ./target/release/vectorization_1`
-   - `runperf perf record ./target/release/vectorization_1` then `perf report -Mintel`.
-   - `runperf ~/src/pmu-tools/toplev --core S0-C0 -l1 -v --no-desc target/release/vectorization_1` (then try with `-l2` instead of `-l1`)
+   - `runperf perf stat ./target/release/vectorization_2`
+   - `runperf perf record ./target/release/vectorization_2` then `perf report -Mintel`.
+   - `runperf ~/src/pmu-tools/toplev --core S0-C0,S0-C1 -l1 -v --no-desc target/release/vectorization_2` (then try with `-l2` instead of `-l1`)
+
+Work with release builds (criterion defaults to release) unless the lab says not to.
 
 ## Misc / Tips
 
@@ -68,7 +77,7 @@ Optimize Rust for your CPU, and include frame pointers: `-Ctarget-cpu=native -Cf
 
 Have `perf report` display the call graph: `perf record --call-graph fp <prog>`. You need to build with `force-frame-pointers` (above in RUSTFLAGS).
 
-Show assembly: `objdump -Mintel -S -d target/release/vectorization_1 | rustfilt`.
+Show assembly: `objdump -Mintel -S -d target/release/vectorization_2 | rustfilt`.
  - `rustfilt` de-mangles Rust symbols: `cargo install rustfilt`
  - `-S` includes source code in the output
 
@@ -77,6 +86,8 @@ By default `perf record` uses the `cycles` events (number of CPU cycles). If you
  - Main memory load (backend bound): `--event=cycle_activity.stalls_l3_miss:P` (An L3 cache miss means we have to go to main memory)
 
 The `:P` denotes a [Precise Event](https://www.intel.com/content/www/us/en/develop/documentation/vtune-help/top/analyze-performance/custom-analysis/custom-analysis-options/hardware-event-list/precise-events.html).
+
+`runperf` restricts execution to two cores and the `toplev` command above watches both those cores. The hope is that one core gets the tool (`toplev`, `perf`, etc) and the other core gets the program you're testing, and they both run without context switches (Linux tries to avoid moving programs between cores if possible). The downside is that it's not obvious which core your program ran on, and `toplev` output includes both. To simplify, edit `runperf`, replace `taskset -c 0,1 sudo nice -n -5 runuser -u $USERNAME -- $@` with `taskset -c 1 sudo nice -n -5 runuser -u $USERNAME -- $@` (ask taskset to only use core 1) and change the `toplev` command to `--core S0-C1` (only watch Socket 0, Core 1).
 
 ## Notes on the port
 

@@ -1,19 +1,30 @@
 #![feature(bench_black_box)]
 
+use std::env::args;
 use std::fs::read_to_string;
+use std::path::PathBuf;
 
 use compiler_intrinsics_2::solution;
 
 fn main() {
+    let cmd_line_args = args();
+    if cmd_line_args.len() != 2 {
+        eprintln!("Usage: compiler_intrinsics_2 path/to/inputs");
+        return;
+    }
+    let inputs_dir_name = cmd_line_args.skip(1).next().unwrap();
+
     let inputs = vec![
         /*"counter-example.txt" // input where sequential solution is faster*/
-        "inputs/LoopVectorize.cpp", // a large C++ file from the LLVM compiler.
-        "inputs/MarkTwain-TomSawyer.txt", // a typical text file with long lines.
+        "LoopVectorize.cpp",       // a large C++ file from the LLVM compiler.
+        "MarkTwain-TomSawyer.txt", // a typical text file with long lines.
     ];
 
     let mut input_contents = Vec::with_capacity(inputs.len());
     for input in &inputs {
-        let input_content = read_to_string(input).unwrap();
+        let mut inputs_dir_path = PathBuf::from(&inputs_dir_name);
+        inputs_dir_path.push(input);
+        let input_content = read_to_string(inputs_dir_path).unwrap();
         input_contents.push(input_content);
     }
 

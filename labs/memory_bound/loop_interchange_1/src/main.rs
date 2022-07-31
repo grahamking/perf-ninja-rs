@@ -8,7 +8,7 @@ fn main() {
     let mut matrix_b = vec![vec![0.0f32; N]; N];
     zero(&mut matrix_b);
 
-    for _ in 0..5 {
+    for _ in 0..2 {
         matrix_b = power(&matrix_a, 2021);
         std::hint::black_box(&mut matrix_b);
     }
