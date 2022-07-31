@@ -6,8 +6,6 @@ You will need to watch the videos at the parent project, that's the course. To d
 
 I recommend reading Denis' free ebook [Performance Analysis and Tuning on Modern CPUs](https://book.easyperf.net/perf_book) as you do the course. Things can get a little confusing otherwise, and the book all by itself is excellent; real practical performance tuning advice from an expert.
 
-## Lab assignments ported so far
-
 * [Core Bound](labs/core_bound):
   * [Vectorization 1](labs/core_bound/vectorization_1)
   * [Vectorization 2](labs/core_bound/vectorization_2)
@@ -43,7 +41,7 @@ Aside from those differences, the Rust code should serve you well in your studie
 ## Setup
 
 You need:
- - [Rust](https://www.rust-lang.org/tools/install), obviously.
+ - [Rust](https://www.rust-lang.org/tools/install) and switch to [nightly](https://rust-lang.github.io/rustup/concepts/channels.html) release.
  - The videos from the parent project: https://github.com/dendibakh/perf-ninja
  - [runperf](https://gist.github.com/grahamking/9c8c91b871843a9a6ce2bec428b8f48d) script to be able to run accurate benchmarks on Linux.
  - [pmu-tools](https://github.com/andikleen/pmu-tools) to do the investigation.
