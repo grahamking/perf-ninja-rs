@@ -1,2 +1,1 @@
-Under Clang 14 this is memory bound, not core bound. The Rust version matches the C++ version that way. It's possible this won't teach you what the lab intends. Reduce / remove the dependency chains anyway, and see if the benchmark shows a performance improvement.
-
+Be aware that this reports as memory bound, not core bound (so does the C++ version). Reduce / remove the dependency chain anyway and the benchmark should show a performance improvement. The C++ version does.
