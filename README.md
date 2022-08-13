@@ -6,21 +6,23 @@ You will need to watch the videos at the parent project, that's the course. To d
 
 I recommend reading Denis' free ebook [Performance Analysis and Tuning on Modern CPUs](https://book.easyperf.net/perf_book) as you do the course. Things can get a little confusing otherwise, and the book all by itself is excellent; real practical performance tuning advice from an expert.
 
-* [Core Bound](labs/core_bound):
+## Lab assignments
+
+* Core Bound:
   * [Vectorization 1](labs/core_bound/vectorization_1)
   * [Vectorization 2](labs/core_bound/vectorization_2)
   * [Function Inlining](labs/core_bound/function_inlining_1): Not relevant in Rust because of static linking, see the README.
   * [Dependency Chains 1](labs/core_bound/dep_chains_1)
   * [Compiler Intrinsics 1](labs/core_bound/compiler_intrinsics_1)
   * [Compiler Intrinsics 2](labs/core_bound/compiler_intrinsics_2)
-* [Memory Bound](labs/memory_bound):
+* Memory Bound:
   * [Data Packing](labs/memory_bound/data_packing)
   * [Loop Interchange 1](labs/memory_bound/loop_interchange_1): Rust version does not appear to be memory bound, see the README.
   * [Loop Interchange 2](labs/memory_bound/loop_interchange_2): Rust version does not appear to be memory bound, see the README.
   * [Loop Tiling](labs/memory_bound/loop_tiling_1)
   * [SW memory prefetching](labs/memory_bound/swmem_prefetch_1)
   * [False Sharing](labs/memory_bound/false_sharing_1)
-* [Bad Speculation](labs/bad_speculation):
+* Bad Speculation:
   * [Conditional Store](labs/bad_speculation/conditional_store_1)
   * [Replacing Branches With Lookup Tables](labs/bad_speculation/lookup_tables_1)
   * [Rust Virtual Calls](labs/bad_speculation/virtual_call_mispredict)
@@ -28,6 +30,7 @@ I recommend reading Denis' free ebook [Performance Analysis and Tuning on Modern
   * [Warmup](labs/misc/warmup)
   * LTO: TODO
   * PGO: TODO
+  * Optimize IO: TODO
 
 The three labs with comments above do not match their C++ version. Loop Interchange 1 and 2 probably need changing.
 
