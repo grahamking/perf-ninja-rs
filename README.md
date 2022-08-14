@@ -63,7 +63,7 @@ You will only need to touch the code in `lib.rs`. The unit test, the benchmark a
 
 1. Improve the code in `lib.rs`.
 1. Check it's still correct: `cargo test`.
-1. Run the benchmark to see how you're doing: `runperf ~/.cargo/bin/cargo criterion bench --lab` (runperf loses $PATH, hence cargo full path).
+1. Run the benchmark to see how you're doing: `runperf ~/.cargo/bin/cargo criterion --bench lab` (runperf loses $PATH, hence cargo full path).
 1. Build main: `cargo build --release`
 1. Analyse it to find bottlenecks - the videos often walk through this part, then go back to step 1. e.g:
    - `runperf perf stat ./target/release/vectorization_2`
