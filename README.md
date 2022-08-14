@@ -11,7 +11,7 @@ I recommend reading Denis' free ebook [Performance Analysis and Tuning on Modern
 * Core Bound:
   * [Vectorization 1](labs/core_bound/vectorization_1)
   * [Vectorization 2](labs/core_bound/vectorization_2)
-  * [Function Inlining](labs/core_bound/function_inlining_1): Not relevant in Rust because of static linking, see the README.
+  * [Function Inlining](labs/core_bound/function_inlining_1)
   * [Dependency Chains 1](labs/core_bound/dep_chains_1)
   * [Compiler Intrinsics 1](labs/core_bound/compiler_intrinsics_1)
   * [Compiler Intrinsics 2](labs/core_bound/compiler_intrinsics_2)
@@ -32,11 +32,10 @@ I recommend reading Denis' free ebook [Performance Analysis and Tuning on Modern
   * PGO: TODO
   * Optimize IO: TODO
 
-The three labs with comments above do not match their C++ version. Loop Interchange 1 and 2 probably need changing.
+The two Loop Interchange labs do not match their C++ version. They are probably not an accurate port and need changing.
 
-These three labs match the bottlenecks of their C++ versions (under Clang 14), but have different bottlenecks than indicated. This is probably because Rust uses Clang 14 but the labs were built for Clang 12:
+These two labs match the bottlenecks of their C++ versions (under Clang 14), but have different bottlenecks than indicated.
  - Core Bound / Vectorization 1: Use debug mode, that has the correct bottleneck.
- - Core Bound / Dependency Chains 1: Is memory bound, not core bound.
  - Memory Bound / SW memory prefetching: Not memory bound, bottleneck seems to be branch prediction.
 
 Aside from those differences, the Rust code should serve you well in your studies to become a performance ninja!

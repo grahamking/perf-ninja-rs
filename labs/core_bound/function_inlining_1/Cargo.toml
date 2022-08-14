@@ -8,6 +8,7 @@ name = "lab"
 harness = false
 
 [dependencies]
+libc = "0.2.131"
 rand = "0.8.5"
 
 [dev-dependencies]

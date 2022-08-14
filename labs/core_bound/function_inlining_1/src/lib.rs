@@ -2,7 +2,9 @@
 #![feature(maybe_uninit_array_assume_init)]
 
 use std::cmp::Ordering;
-use std::mem::MaybeUninit;
+use std::mem::{size_of, MaybeUninit};
+
+use libc::{c_int, c_void, qsort, size_t};
 
 // Assume this constant never changes
 pub const N: usize = 10_000;
@@ -33,8 +35,19 @@ fn compare(a: &S, b: &S) -> Ordering {
     Ordering::Equal
 }
 
+unsafe extern "C" fn qsort_compare(lhs: *const c_void, rhs: *const c_void) -> c_int {
+    compare(&*(lhs as *const S), &*(rhs as *const S)) as c_int
+}
+
 pub fn solution(arr: &mut [S; N]) {
-    arr.sort_unstable_by(compare);
+    unsafe {
+        qsort(
+            arr.as_mut_ptr() as *mut c_void,
+            N as size_t,
+            size_of::<S>() as size_t,
+            Some(qsort_compare),
+        );
+    }
 }
 
 pub fn init() -> [S; N] {
