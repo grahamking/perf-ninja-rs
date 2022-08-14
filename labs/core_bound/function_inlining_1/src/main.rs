@@ -14,7 +14,9 @@ fn main() {
 #[cfg(test)]
 mod tests {
     use function_inlining_1::{init, solution, N, S};
+    use libc::{c_int, c_void, qsort, size_t};
     use std::cmp::Ordering;
+    use std::mem::size_of;
 
     #[test]
     fn validate() {
@@ -47,7 +49,18 @@ mod tests {
         Ordering::Equal
     }
 
+    unsafe extern "C" fn qsort_compare(lhs: *const c_void, rhs: *const c_void) -> c_int {
+        original_compare(&*(lhs as *const S), &*(rhs as *const S)) as c_int
+    }
+
     fn original_solution(arr: &mut [S; N]) {
-        arr.sort_unstable_by(original_compare);
+        unsafe {
+            qsort(
+                arr.as_mut_ptr() as *mut c_void,
+                N as size_t,
+                size_of::<S>() as size_t,
+                Some(qsort_compare),
+            );
+        }
     }
 }
