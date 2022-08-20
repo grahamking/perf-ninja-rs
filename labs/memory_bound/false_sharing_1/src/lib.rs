@@ -26,7 +26,7 @@ pub fn solution(data: &[u32], thread_count: usize) -> i32 {
                     item |= item >> 24;
 
                     // Write result to accumulator
-                    target_acc.fetch_add(item % 13, Ordering::Relaxed);
+                    target_acc.fetch_add(item % 13, Ordering::SeqCst);
                 }
             });
         }
@@ -34,7 +34,7 @@ pub fn solution(data: &[u32], thread_count: usize) -> i32 {
 
     accumulators
         .iter()
-        .map(|v| v.load(Ordering::Relaxed) as usize)
+        .map(|v| v.load(Ordering::SeqCst) as usize)
         .sum::<usize>()
         .try_into()
         .unwrap()
