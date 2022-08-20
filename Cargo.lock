@@ -257,6 +257,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "io_opt1"
+version = "0.1.0"
+dependencies = [
+ "criterion",
+ "rand",
+]
+
+[[package]]
 name = "itertools"
 version = "0.10.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"

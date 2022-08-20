@@ -30,7 +30,7 @@ I recommend reading Denis' free ebook [Performance Analysis and Tuning on Modern
   * [Warmup](labs/misc/warmup)
   * LTO: TODO
   * PGO: TODO
-  * Optimize IO: TODO
+  * [Optimize IO](labs/misc/io_opt1)
 
 The two Loop Interchange labs do not match their C++ version. They are probably not an accurate port and need changing.
 
