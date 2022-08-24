@@ -1,5 +1,8 @@
 use std::cmp::max;
 
+#[cfg(test)]
+mod tests;
+
 // Find the longest line in a file.
 // Implementation uses ternary operator with a hope that compiler will
 // turn it into a CMOV instruction.

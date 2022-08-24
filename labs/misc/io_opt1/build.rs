@@ -12,7 +12,7 @@ fn main() -> ExitCode {
     println!("cargo:rerun-if-changed=build.rs");
 
     let root_dir = PathBuf::from(var("CARGO_MANIFEST_DIR").unwrap());
-    let data_dir = root_dir.clone().join("data");
+    let data_dir = root_dir.join("data");
     if !data_dir.exists() {
         create_dir(&data_dir).unwrap();
     }

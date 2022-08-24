@@ -3,9 +3,9 @@ name = "loop_tiling_1"
 version = "0.1.0"
 edition = "2021"
 
-[dev-dependencies]
-criterion = "0.3.6"
-
 [[bench]]
-name = "lab"
+name = "bench_loop_tiling_1"
 harness = false
+
+[dev-dependencies]
+criterion = { version = "0.3.6", features = ["html_reports", "real_blackbox", "cargo_bench_support"] }

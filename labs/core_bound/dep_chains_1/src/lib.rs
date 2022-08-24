@@ -1,6 +1,9 @@
 #![feature(allocator_api)]
 #![feature(ptr_sub_ptr)]
 
+#[cfg(test)]
+mod tests;
+
 mod init;
 pub use init::get_random_list;
 

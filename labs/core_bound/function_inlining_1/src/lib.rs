@@ -6,6 +6,9 @@ use std::mem::{size_of, MaybeUninit};
 
 use libc::{c_int, c_void, qsort, size_t};
 
+#[cfg(test)]
+mod tests;
+
 // Assume this constant never changes
 pub const N: usize = 10_000;
 

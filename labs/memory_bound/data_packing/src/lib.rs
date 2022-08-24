@@ -5,6 +5,9 @@ use rand::prelude::*;
 
 use std::cmp::{Ord, Ordering, PartialOrd};
 
+#[cfg(test)]
+mod tests;
+
 mod init;
 pub use init::{create_entry, init};
 

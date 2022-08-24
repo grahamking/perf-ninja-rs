@@ -1,5 +1,8 @@
 #![feature(new_uninit)]
 
+#[cfg(test)]
+mod tests;
+
 // Assume this constant never changes
 pub const N: usize = 400;
 

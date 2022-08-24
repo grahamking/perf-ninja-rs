@@ -2,6 +2,9 @@ use std::cmp::{max, min};
 use std::fs::File;
 use std::io::{BufRead, BufReader, Read, Write};
 
+#[cfg(test)]
+mod tests;
+
 pub const K_MAX_IMAGE_DIMENSION: usize = 32 * 1024;
 
 // Applies Gaussian blur in independent vertical lines
@@ -174,7 +177,7 @@ impl Grayscale {
             line.clear();
             input.read_line(&mut line).unwrap();
 
-            let mut dim = line.trim_end().split_whitespace();
+            let mut dim = line.split_whitespace();
             self.width = dim.next().unwrap().parse().unwrap();
             // the format is either "width\nheight" or "width height"
             self.height = match dim.next() {

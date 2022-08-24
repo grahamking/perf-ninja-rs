@@ -1,14 +1,21 @@
+use crate::{image_smoothing, init, InputVector, OutputVector, RADIUS};
 use std::cmp::min;
 
-#[cfg(test)]
-mod tests;
+#[test]
+fn validate() {
+    let in_a = init();
 
-pub type InputVector = Vec<u8>;
-pub type OutputVector = Vec<u16>;
-pub const RADIUS: usize = 13; // assume diameter (2 * radius + 1) to be less
-                              // than 256 so results fits in uint16_t
+    let mut expected: OutputVector = vec![0; in_a.len()];
+    let mut received: OutputVector = vec![0; in_a.len()];
 
-pub fn image_smoothing(input: &InputVector, radius: usize, output: &mut OutputVector) {
+    reference_solution(&in_a, RADIUS, &mut expected);
+    image_smoothing(&in_a, RADIUS, &mut received);
+
+    assert_eq!(expected.len(), received.len());
+    assert_eq!(expected, received);
+}
+
+fn reference_solution(input: &InputVector, radius: usize, output: &mut OutputVector) {
     let mut pos = 0;
     let mut current_sum: u16 = 0;
     let size = input.len();
@@ -49,14 +56,4 @@ pub fn image_smoothing(input: &InputVector, radius: usize, output: &mut OutputVe
         output[pos] = current_sum;
         pos += 1;
     }
-}
-
-const N: usize = 40_000;
-
-pub fn init() -> InputVector {
-    use rand::prelude::*;
-    let mut generator = thread_rng();
-    let mut data = Vec::with_capacity(N);
-    data.resize_with(N, || generator.gen::<u8>());
-    data
 }

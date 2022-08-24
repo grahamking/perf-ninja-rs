@@ -3,15 +3,9 @@ name = "warmup"
 version = "0.1.0"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[lib]
-
-[dependencies]
+[[bench]]
+name = "bench_warmup"
+harness = false
 
 [dev-dependencies]
-criterion = "0.3"
-
-[[bench]]
-name = "lab"
-harness = false
+criterion = { version = "0.3.6", features = ["html_reports", "real_blackbox", "cargo_bench_support"] }

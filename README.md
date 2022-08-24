@@ -35,7 +35,7 @@ I recommend reading Denis' free ebook [Performance Analysis and Tuning on Modern
 The two Loop Interchange labs do not match their C++ version. They are probably not an accurate port and need changing.
 
 These two labs match the bottlenecks of their C++ versions (under Clang 14), but have different bottlenecks than indicated.
- - Core Bound / Vectorization 1: Use debug mode, that has the correct bottleneck.
+ - Core Bound / Vectorization 1: Try debug mode, that has the correct bottleneck.
  - Memory Bound / SW memory prefetching: Not memory bound, bottleneck seems to be branch prediction.
 
 Aside from those differences, the Rust code should serve you well in your studies to become a performance ninja!
@@ -45,7 +45,6 @@ Aside from those differences, the Rust code should serve you well in your studie
 You need:
  - [Rust](https://www.rust-lang.org/tools/install) and switch to [nightly](https://rust-lang.github.io/rustup/concepts/channels.html) release.
  - The videos from the parent project: https://github.com/dendibakh/perf-ninja
- - [runperf](https://gist.github.com/grahamking/9c8c91b871843a9a6ce2bec428b8f48d) script to be able to run accurate benchmarks on Linux.
  - [pmu-tools](https://github.com/andikleen/pmu-tools) to do the investigation.
 
 ## Layout
@@ -53,31 +52,42 @@ You need:
 Each lab is a cargo project. In brackets are the mappings to the C++ version.
 
  - `src/lib.rs`: The code you need to optimize (solution.cpp, solution.h, init.cpp)
- - `src/main.rs`: A unit test (validate.cpp) to check your code still works, and a simple `main` function for analysis.
- - `benches/lab.rs`: The benchmark (bench.cpp). You need to make this faster.
+ - `src/tests.rs`: A unit test (validate.cpp) to check your code still works.
+ - `benches/bench_<crate>.rs`: The benchmark (bench.cpp). This will tell you when you have made src/lib.rs:solution faster.
 
-You will only need to touch the code in `lib.rs`. The unit test, the benchmark and main all call that code. The benchmark uses [criterion](https://docs.rs/criterion/latest/criterion/) to produce accurate numbers. The downside is that if you analyse that benchmark, you're also analysing criterion. Hence we provide a simple `main` to analyse instead.
+You will only need to touch the code in `lib.rs`. The unit test and the benchmark both call that code. The benchmark uses [criterion](https://docs.rs/criterion/latest/criterion/) to produce accurate numbers.
 
 ## Work loop
 
-1. Improve the code in `lib.rs`.
-1. Check it's still correct: `cargo test`.
-1. Run the benchmark to see how you're doing: `runperf ~/.cargo/bin/cargo criterion --bench lab` (runperf loses $PATH, hence cargo full path).
-1. Build main: `cargo build --release`
-1. Analyse it to find bottlenecks - the videos often walk through this part, then go back to step 1. e.g:
-   - `runperf perf stat ./target/release/vectorization_2`
-   - `runperf perf record ./target/release/vectorization_2` then `perf report -Mintel`.
-   - `runperf ~/src/pmu-tools/toplev --core S0-C0,S0-C1 -l1 -v --no-desc target/release/vectorization_2` (then try with `-l2` instead of `-l1`)
+ 1. `cargo bench`: How fast is it now?
+ 1. Improve the code in `lib.rs`.
+ 1. `cargo test --release`: Is it still correct?
+ 1. Goto 1.
 
-Work with release builds (criterion defaults to release) unless the lab says not to.
+### Better benchmarks
+
+Criterion (which `cargo bench` is using) does statistical benchmarking, but even with that I get a lot of variance between runs. We can do much better:
+
+ 1. Download [runperf](https://gist.github.com/grahamking/9c8c91b871843a9a6ce2bec428b8f48d). This adjusts a bunch of things on Linux to provide repeatable, reliable benchmarks.
+ 1. Find the benchmark binary. `cargo bench` builds it as `target/release/deps/bench_<crate>_<hash>`.
+ 1. Run it directly: `runperf <benchmark_binary> --bench`. You should get the same results every time.
+
+### Find bottlenecks
+
+The videos often walk through this part. Profile the benchmark binary (in `target/release/deps/`). We need to disable criterion's overhead by passing `--profile-time <seconds>`. We always need to pass `--bench` to a Criterion benchmark binary. Use `runperf` (see above) for reliable results.
+
+Examples:
+   - `runperf perf stat ./target/release/deps/bench_<crate>_<hash> --bench --profile-time 5`
+   - `runperf perf record <binary> --bench --profile-time 5` then `perf report -Mintel`.
+   - `runperf ~/src/pmu-tools/toplev --core S0-C0,S0-C1 -l1 -v --no-desc <binary> --bench --profile-time 5` (then try with `-l2` instead of `-l1`)
 
 ## Misc / Tips
 
-Optimize Rust for your CPU, and include frame pointers: `-Ctarget-cpu=native -Cforce-frame-pointers=yes`.
+Optimize Rust for your CPU, and include frame pointers: `export RUSTFLAGS=-Ctarget-cpu=native -Cforce-frame-pointers=yes`.
 
 Have `perf report` display the call graph: `perf record --call-graph fp <prog>`. You need to build with `force-frame-pointers` (above in RUSTFLAGS).
 
-Show assembly: `objdump -Mintel -S -d target/release/vectorization_2 | rustfilt`.
+Show assembly: `objdump -Mintel -S -d target/release/deps/bench_vectorization_2 | rustfilt`.
  - `rustfilt` de-mangles Rust symbols: `cargo install rustfilt`
  - `-S` includes source code in the output
 

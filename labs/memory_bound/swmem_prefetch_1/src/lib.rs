@@ -1,3 +1,6 @@
+#[cfg(test)]
+mod tests;
+
 pub const HASH_MAP_SIZE: usize = 32 * 1024 * 1024 - 5;
 const NUMBER_OF_LOOKUPS: usize = 1024 * 1024;
 

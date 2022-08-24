@@ -1,3 +1,6 @@
+#[cfg(test)]
+mod tests;
+
 pub type MatrixOfDoubles = Vec<Vec<f64>>;
 
 pub fn init_matrix(matrix: &mut MatrixOfDoubles) {

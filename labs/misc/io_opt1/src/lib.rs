@@ -1,6 +1,9 @@
 use std::fs::File;
 use std::io::Read;
 
+#[cfg(test)]
+mod tests;
+
 mod data_paths;
 pub use data_paths::{LARGE_DATA_PATH, MEDIUM_DATA_PATH, SMALL_DATA_PATH};
 
