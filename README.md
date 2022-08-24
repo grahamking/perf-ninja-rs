@@ -83,7 +83,7 @@ Examples:
 
 ## Misc / Tips
 
-Optimize Rust for your CPU, and include frame pointers: `export RUSTFLAGS=-Ctarget-cpu=native -Cforce-frame-pointers=yes`.
+Optimize Rust for your CPU, and include frame pointers: `export RUSTFLAGS="-Ctarget-cpu=native -Cforce-frame-pointers=yes"`.
 
 Have `perf report` display the call graph: `perf record --call-graph fp <prog>`. You need to build with `force-frame-pointers` (above in RUSTFLAGS).
 
