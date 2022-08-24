@@ -8,7 +8,7 @@ use compiler_intrinsics_2::solution;
 fn bench1(c: &mut Criterion) {
     let inputs = vec![
         /*"counter-example.txt" // input where sequential solution is faster*/
-        "inputs/LoopVectorize.cpp", // a large C++ file from the LLVM compiler.
+        "inputs/LoopVectorize.txt", // a large C++ file from the LLVM compiler.
         "inputs/MarkTwain-TomSawyer.txt", // a typical text file with long lines.
     ];
 

@@ -9,7 +9,7 @@ fn validate() -> std::io::Result<()> {
         "inputs/test1.txt",               // basic test
         "inputs/test2.txt",               // no end-of-line in the end
         "inputs/test3.txt",               // small number of characters
-        "inputs/LoopVectorize.cpp",       // a large C++ file from the LLVM compiler.
+        "inputs/LoopVectorize.txt",       // a large C++ file from the LLVM compiler.
         "inputs/MarkTwain-TomSawyer.txt", // a typical text file with long lines.
         "inputs/counter-example.txt",     // input where sequential solution is faster
     ];
