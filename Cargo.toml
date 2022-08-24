@@ -1,6 +1,9 @@
 
-# This allows `objdump -S` to show us the source code. It doesn't impact performance.
+# These allow `objdump -S` to show us the source code. Doesn't impact performance.
 [profile.release]
+debug = true
+
+[profile.bench]
 debug = true
 
 [workspace]
