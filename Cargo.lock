@@ -257,6 +257,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "huge_pages_1"
+version = "0.1.0"
+dependencies = [
+ "criterion",
+ "rand",
+]
+
+[[package]]
 name = "io_opt1"
 version = "0.1.0"
 dependencies = [

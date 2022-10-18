@@ -22,6 +22,7 @@ I recommend reading Denis' free ebook [Performance Analysis and Tuning on Modern
   * [Loop Tiling](labs/memory_bound/loop_tiling_1)
   * [SW memory prefetching](labs/memory_bound/swmem_prefetch_1)
   * [False Sharing](labs/memory_bound/false_sharing_1)
+  * [Huge Pages](labs/memory_bound/huge_pages_1)
 * Bad Speculation:
   * [Conditional Store](labs/bad_speculation/conditional_store_1)
   * [Replacing Branches With Lookup Tables](labs/bad_speculation/lookup_tables_1)

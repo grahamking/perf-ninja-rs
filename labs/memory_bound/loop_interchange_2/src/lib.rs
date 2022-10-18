@@ -49,7 +49,7 @@ fn filter_vertically(
             }
 
             // Fast shift instead of division
-            let value = (dot + rounding) >> shift;
+            let value: i32 = (dot + rounding) >> shift;
             output[r * width + c] = value as u8;
         }
 
