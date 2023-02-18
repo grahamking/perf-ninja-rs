@@ -1,5 +1,3 @@
-#![feature(bench_black_box)]
-
 use conditional_store_1::{init, select, N};
 
 fn main() {

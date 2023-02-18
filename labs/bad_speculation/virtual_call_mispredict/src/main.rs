@@ -1,5 +1,3 @@
-#![feature(bench_black_box)]
-
 use virtual_call_mispredict::{generate_objects, invoke};
 
 fn main() {

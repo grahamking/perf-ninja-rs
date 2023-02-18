@@ -1,5 +1,3 @@
-#![feature(bench_black_box)]
-
 use lookup_tables_1::{histogram, init};
 
 fn main() {
