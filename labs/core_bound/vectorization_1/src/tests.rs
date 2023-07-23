@@ -56,7 +56,7 @@ fn validate() {
             last_vertical_gap = horizontal_gap_column[0] + gap_open;
             horizontal_gap_column[0] += gap_extension;
 
-            for row in 1..sequence1.len() {
+            for row in 1..=sequence1.len() {
                 // Compute next score from diagonal direction with match/mismatch.
                 let mut best_cell_score = last_diagonal_score
                     + (if sequence1[row - 1] == sequence2[col - 1] {

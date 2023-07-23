@@ -61,7 +61,7 @@ pub fn compute_alignment(sequences1: &[Sequence], sequences2: &[Sequence]) -> Al
             horizontal_gap_column[0] += gap_extension;
 
             let diag = sequence2[col - 1];
-            for row in 1..sequence1.len() {
+            for row in 1..=sequence1.len() {
                 // Compute next score from diagonal direction with match/mismatch.
                 let mut best_cell_score = last_diagonal_score
                     + (if sequence1[row - 1] == diag {
