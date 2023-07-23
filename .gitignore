@@ -1,4 +1,5 @@
 target/
-perf.data
+perf.data*
 data/
 labs/misc/io_opt1/src/data_paths.rs
+Cargo.lock
