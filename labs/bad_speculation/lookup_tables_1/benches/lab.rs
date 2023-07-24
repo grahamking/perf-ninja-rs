@@ -1,5 +1,3 @@
-#![feature(bench_black_box)]
-
 use criterion::{criterion_group, criterion_main, Criterion};
 
 use lookup_tables_1::{histogram, init};

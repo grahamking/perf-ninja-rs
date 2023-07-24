@@ -1,5 +1,3 @@
-#![feature(bench_black_box)]
-
 use criterion::{criterion_group, criterion_main, Criterion};
 
 use swmem_prefetch_1::{init, solution, HashMapT, HASH_MAP_SIZE};

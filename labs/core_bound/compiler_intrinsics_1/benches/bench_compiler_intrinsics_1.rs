@@ -1,5 +1,3 @@
-#![feature(bench_black_box)]
-
 use criterion::{criterion_group, criterion_main, Criterion};
 
 use compiler_intrinsics_1::{image_smoothing, init, OutputVector, RADIUS};

@@ -1,5 +1,3 @@
-#![feature(bench_black_box)]
-
 use criterion::{criterion_group, criterion_main, Criterion};
 
 use function_inlining_1::{init, solution};

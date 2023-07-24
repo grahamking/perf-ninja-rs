@@ -1,5 +1,3 @@
-#![feature(bench_black_box)]
-
 use criterion::{criterion_group, criterion_main, Criterion};
 
 use conditional_store_1::{init, select, N};

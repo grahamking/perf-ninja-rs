@@ -7,6 +7,7 @@ debug = true
 debug = true
 
 [workspace]
+resolver = "2"
 members = [
   "labs/misc/warmup",
   "labs/misc/io_opt1",
@@ -27,3 +28,6 @@ members = [
   "labs/bad_speculation/lookup_tables_1",
   "labs/bad_speculation/virtual_call_mispredict",
 ]
+
+[workspace.package]
+edition = "2021"

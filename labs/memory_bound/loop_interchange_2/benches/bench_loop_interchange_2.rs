@@ -1,5 +1,3 @@
-#![feature(bench_black_box)]
-
 use criterion::{criterion_group, criterion_main, Criterion};
 
 use loop_interchange_2::{blur, Grayscale, K_MAX_IMAGE_DIMENSION};
