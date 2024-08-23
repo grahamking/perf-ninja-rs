@@ -1,5 +1,3 @@
-#![feature(new_uninit)]
-
 #[cfg(test)]
 mod tests;
 
@@ -12,8 +10,10 @@ pub const N: usize = 400;
 // unit test threads don't have, so we allocate it on the heap.
 pub type Matrix = Box<[[f32; N]; N]>;
 
-const ZERO_ARR: [[f32; N]; N] = [[0.0f32; N]; N];
 pub fn create_matrix() -> Matrix {
+    // in unoptimized builds this will copy from static memory
+    // in optimized builds it's just a memset
+    const ZERO_ARR: [[f32; N]; N] = [[0.0f32; N]; N];
     Box::new(ZERO_ARR)
 }
 
