@@ -12,8 +12,9 @@ pub const N: usize = 400;
 // unit test threads don't have, so we allocate it on the heap.
 pub type Matrix = Box<[[f32; N]; N]>;
 
+const ZERO_ARR: [[f32; N]; N] = [[0.0f32; N]; N];
 pub fn create_matrix() -> Matrix {
-    unsafe { Box::new_zeroed().assume_init() }
+    Box::new(ZERO_ARR)
 }
 
 // Make zero matrix
@@ -40,8 +41,8 @@ pub fn multiply(result: &mut Matrix, a: &Matrix, b: &Matrix) {
     zero(result);
 
     for i in 0..N {
-        for j in 0..N {
-            for k in 0..N {
+        for k in 0..N {
+            for j in 0..N {
                 result[i][j] += a[i][k] * b[k][j];
             }
         }
