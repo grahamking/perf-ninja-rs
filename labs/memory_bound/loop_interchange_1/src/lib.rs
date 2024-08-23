@@ -41,8 +41,8 @@ pub fn multiply(result: &mut Matrix, a: &Matrix, b: &Matrix) {
     zero(result);
 
     for i in 0..N {
-        for k in 0..N {
-            for j in 0..N {
+        for j in 0..N {
+            for k in 0..N {
                 result[i][j] += a[i][k] * b[k][j];
             }
         }
