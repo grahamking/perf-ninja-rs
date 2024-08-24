@@ -1,14 +1,14 @@
-use crate::{identity, init, multiply, power, zero, Matrix, N};
+use crate::{create_matrix, identity, init, multiply, power, zero, Matrix, N};
 
 #[test]
 fn validate() {
     const K: i32 = 15;
     const K1: i32 = 5;
 
-    let mut a = vec![vec![0.0f32; N]; N];
-    let mut b = vec![vec![0.0f32; N]; N];
-    let mut c = vec![vec![0.0f32; N]; N];
-    let mut d = vec![vec![0.0f32; N]; N];
+    let mut a = create_matrix();
+    let mut b = create_matrix();
+    let mut c = create_matrix();
+    let mut d = create_matrix();
 
     init(&mut a);
     zero(&mut b);
