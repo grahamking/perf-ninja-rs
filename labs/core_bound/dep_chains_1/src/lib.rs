@@ -1,5 +1,4 @@
 #![feature(allocator_api)]
-#![feature(ptr_sub_ptr)]
 
 #[cfg(test)]
 mod tests;

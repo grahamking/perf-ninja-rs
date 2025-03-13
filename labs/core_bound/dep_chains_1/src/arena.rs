@@ -34,7 +34,7 @@ unsafe impl Allocator for Arena {
     fn allocate(&self, layout: Layout) -> Result<NonNull<[u8]>, AllocError> {
         let cur_ptr = *self.cur_ptr.borrow_mut();
         let end_ptr = *self.end_ptr.borrow();
-        let space = unsafe { end_ptr.sub_ptr(cur_ptr) };
+        let space = end_ptr as usize - cur_ptr as usize;
         if space < layout.size() {
             return Err(AllocError {});
         }
