@@ -1,4 +1,3 @@
-#![feature(maybe_uninit_uninit_array)]
 #![feature(maybe_uninit_array_assume_init)]
 
 use std::cmp::Ordering;
@@ -57,7 +56,7 @@ pub fn init() -> [S; N] {
     use rand::distributions::Uniform;
     use rand::prelude::*;
 
-    let mut arr: [MaybeUninit<S>; N] = MaybeUninit::uninit_array();
+    let mut arr: [MaybeUninit<S>; N] = std::array::from_fn(|_| MaybeUninit::uninit());
     let mut generator = thread_rng();
     let distribution = Uniform::from(0..9000);
     for i in 0..N {

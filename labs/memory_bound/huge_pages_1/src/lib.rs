@@ -4,7 +4,6 @@
 // allocator.rs                                             //
 //////////////////////////////////////////////////////////////
 
-#![feature(maybe_uninit_uninit_array)]
 #![feature(maybe_uninit_array_assume_init)]
 #![feature(allocator_api)]
 
@@ -75,7 +74,7 @@ const fn compute_dofs(n1: u32, n2: u32) -> [u32; 4] {
 
 fn gather_global(n1: u32, n2: u32, rhs_global: &[f64]) -> [f64; 4] {
     let dofs = compute_dofs(n1, n2);
-    let mut vals: [MaybeUninit<f64>; 4] = MaybeUninit::uninit_array();
+    let mut vals: [MaybeUninit<f64>; 4] = std::array::from_fn(|_| MaybeUninit::uninit());
     let mut i = 0;
     while i < dofs.len() {
         vals[i].write(rhs_global[dofs[i] as usize]);
