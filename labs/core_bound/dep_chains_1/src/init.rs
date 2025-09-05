@@ -30,7 +30,7 @@ pub fn get_random_list(allocator: &Arena) -> *const List {
             },
             allocator,
         );
-        Box::into_raw(b)
+        Box::into_raw_with_allocator(b).0
     };
 
     let head = create_node(0);
