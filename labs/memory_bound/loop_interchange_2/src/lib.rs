@@ -201,8 +201,7 @@ impl Grayscale {
                 && (self.width <= max_size)
                 && (self.height > 0)
                 && (self.height <= max_size)
-                && (amplitude >= 0)
-                && (amplitude <= 255)
+                && (0..=255).contains(&amplitude)
             {
                 self.size = self.width * self.height;
                 self.data.resize(self.size, 0);

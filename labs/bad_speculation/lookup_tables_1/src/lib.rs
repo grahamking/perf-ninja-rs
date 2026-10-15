@@ -3,31 +3,31 @@ pub const NUM_VALUES: usize = 1024 * 1024;
 
 fn map_to_bucket(v: isize) -> usize {
     // diff
-    if v >= 0 && v < 13 {
+    if (0..13).contains(&v) {
         return 0;
     }
     // 13
-    else if v >= 13 && v < 29 {
+    else if (13..29).contains(&v) {
         return 1;
     }
     // 16
-    else if v >= 29 && v < 41 {
+    else if (29..41).contains(&v) {
         return 2;
     }
     // 12
-    else if v >= 41 && v < 53 {
+    else if (41..53).contains(&v) {
         return 3;
     }
     // 12
-    else if v >= 53 && v < 71 {
+    else if (53..71).contains(&v) {
         return 4;
     }
     // 18
-    else if v >= 71 && v < 83 {
+    else if (71..83).contains(&v) {
         return 5;
     }
     // 12
-    else if v >= 83 && v < 100 {
+    else if (83..100).contains(&v) {
         return 6;
     } // 17
     panic!("// let it crash");

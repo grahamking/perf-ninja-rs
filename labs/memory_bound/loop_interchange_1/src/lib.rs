@@ -13,7 +13,7 @@ pub type Matrix = Box<[[f32; N]; N]>;
 pub fn create_matrix() -> Matrix {
     // in unoptimized builds this will copy from static memory
     // in optimized builds it's just a memset
-    const ZERO_ARR: [[f32; N]; N] = [[0.0f32; N]; N];
+    static ZERO_ARR: [[f32; N]; N] = [[0.0f32; N]; N];
     Box::new(ZERO_ARR)
 }
 

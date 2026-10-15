@@ -16,6 +16,12 @@ pub struct Arena {
     end_ptr: RefCell<*const u8>,
 }
 
+impl Default for Arena {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl Arena {
     pub fn new() -> Arena {
         let a = Arena {

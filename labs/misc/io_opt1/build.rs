@@ -59,8 +59,7 @@ fn write_random_string(path: &Path, len: usize) {
         f.write_all(&buf).unwrap();
         remain -= CHUNK_SIZE;
     }
-    let mut buf = vec![];
-    buf.resize(remain, 0);
+    let mut buf = vec![0; remain];
     rng.fill(&mut buf[..]);
     f.write_all(&buf).unwrap();
 }
