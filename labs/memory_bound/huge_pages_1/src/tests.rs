@@ -1,5 +1,5 @@
 use crate::{allocator, generate_mesh, solution};
-use rand::distributions::{Distribution, Uniform};
+use rand::distr::{Distribution, Uniform};
 use std::alloc::{Allocator, System};
 
 const N_NODES_X: u32 = 100;
@@ -17,8 +17,8 @@ fn solve<A: Allocator>(alloc: &'static A) -> Vec<f64, &'static A> {
     let mut lhs = Vec::with_capacity_in(2 * N_NODES as usize, alloc);
     lhs.resize(2 * N_NODES as usize, 0.0);
 
-    let mut prng = rand::thread_rng();
-    let dist = Uniform::from(0.0..42.0);
+    let mut prng = rand::rng();
+    let dist = Uniform::new(0.0, 42.0).unwrap();
     for _ in 0..lhs.len() {
         lhs.push(dist.sample(&mut prng));
     }

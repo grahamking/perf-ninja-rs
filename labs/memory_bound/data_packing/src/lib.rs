@@ -49,7 +49,7 @@ impl Eq for S {}
 
 pub fn solution(arr: &mut [S]) {
     // 1. shuffle
-    let mut rd = thread_rng();
+    let mut rd = rand::rng();
     arr.shuffle(&mut rd);
 
     // 2. sort

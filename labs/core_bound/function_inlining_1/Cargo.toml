@@ -9,7 +9,7 @@ harness = false
 
 [dependencies]
 libc = "0.2"
-rand = "0.8"
+rand = "0.10"
 
 [dev-dependencies]
 criterion = { version = "0.5", features = ["html_reports", "real_blackbox", "cargo_bench_support"] }

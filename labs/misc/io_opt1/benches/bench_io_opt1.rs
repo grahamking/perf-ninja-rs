@@ -2,7 +2,8 @@ use criterion::{criterion_group, criterion_main, Criterion};
 
 use io_opt1::{solution, /*LARGE_DATA_PATH, MEDIUM_DATA_PATH,*/ SMALL_DATA_PATH};
 
-const FILE_NAMES: [(&str, &str); 1] = [ // change 1 to 3
+const FILE_NAMES: [(&str, &str); 1] = [
+    // change 1 to 3
     ("Small file", SMALL_DATA_PATH),
     //("Medium file", MEDIUM_DATA_PATH),
     //("Large file", LARGE_DATA_PATH),

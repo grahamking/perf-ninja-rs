@@ -11,10 +11,10 @@ pub fn create_entry(first_value: i32, second_value: i32) -> S {
 }
 
 pub fn init() -> [S; N] {
-    use rand::distributions::Uniform;
+    use rand::distr::Uniform;
     use rand::prelude::*;
-    let mut generator = thread_rng();
-    let distribution = Uniform::from(MIN_RANDOM..MAX_RANDOM - 1);
+    let mut generator = rand::rng();
+    let distribution = Uniform::new(MIN_RANDOM, MAX_RANDOM - 1).unwrap();
 
     let mut out = [Default::default(); N];
     for i in 0..N {

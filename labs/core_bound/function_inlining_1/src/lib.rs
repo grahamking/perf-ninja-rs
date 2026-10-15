@@ -53,12 +53,12 @@ pub fn solution(arr: &mut [S; N]) {
 }
 
 pub fn init() -> [S; N] {
-    use rand::distributions::Uniform;
+    use rand::distr::Uniform;
     use rand::prelude::*;
 
     let mut arr: [MaybeUninit<S>; N] = std::array::from_fn(|_| MaybeUninit::uninit());
-    let mut generator = thread_rng();
-    let distribution = Uniform::from(0..9000);
+    let mut generator = rand::rng();
+    let distribution = Uniform::new(0, 9000).unwrap();
     for i in 0..N {
         arr[i].write(S {
             key1: distribution.sample(&mut generator),

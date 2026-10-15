@@ -1,4 +1,4 @@
-use rand::distributions::Uniform;
+use rand::distr::Uniform;
 use rand::prelude::*;
 use std::ptr::null;
 
@@ -6,8 +6,8 @@ use crate::Arena;
 use crate::{List, N};
 
 pub fn get_random_vector() -> Vec<u32> {
-    let mut generator = thread_rng();
-    let distribution = Uniform::from(0..u16::MAX);
+    let mut generator = rand::rng();
+    let distribution = Uniform::new(0, u16::MAX).unwrap();
 
     let mut ret_vector: Vec<u32> = Vec::with_capacity(N);
     ret_vector.resize_with(N, || distribution.sample(&mut generator).into());

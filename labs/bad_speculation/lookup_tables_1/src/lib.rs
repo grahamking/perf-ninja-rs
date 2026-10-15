@@ -42,13 +42,13 @@ pub fn histogram(values: &[isize]) -> [isize; NUM_BUCKETS] {
 }
 
 pub fn init() -> Vec<isize> {
-    use rand::distributions::Uniform;
+    use rand::distr::Uniform;
     use rand::prelude::*;
-    let mut generator = thread_rng();
+    let mut generator = rand::rng();
     // generate random integer in the closed interval [0,99]
-    let distribution = Uniform::from(0..=99);
+    let distribution = Uniform::new_inclusive(0i32, 99).unwrap();
 
     let mut values = Vec::with_capacity(NUM_VALUES);
-    values.resize_with(NUM_VALUES, || distribution.sample(&mut generator));
+    values.resize_with(NUM_VALUES, || distribution.sample(&mut generator) as isize);
     values
 }

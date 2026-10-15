@@ -104,12 +104,12 @@ pub fn compute_alignment(sequences1: &[Sequence], sequences2: &[Sequence]) -> Al
 
 // Initialises a pair of sequence collections given a fixed sequence size.
 pub fn init() -> (Vec<Sequence>, Vec<Sequence>) {
-    use rand::distributions::Uniform;
+    use rand::distr::Uniform;
     use rand::prelude::*;
-    let mut random_engine = thread_rng();
+    let mut random_engine = rand::rng();
 
     // Simulate DNA alphabet with 4 symbols.
-    let symbol_distribution = Uniform::from(0..4);
+    let symbol_distribution = Uniform::new(0, 4).unwrap();
 
     let mut generate_sequences = || -> Vec<Sequence> {
         let mut sequences: Vec<Sequence> = vec![[0u8; SEQUENCE_SIZE]; SEQUENCE_COUNT];

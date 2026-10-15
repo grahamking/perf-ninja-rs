@@ -55,8 +55,8 @@ const N: usize = 40_000;
 
 pub fn init() -> InputVector {
     use rand::prelude::*;
-    let mut generator = thread_rng();
+    let mut generator = rand::rng();
     let mut data = Vec::with_capacity(N);
-    data.resize_with(N, || generator.gen::<u8>());
+    data.resize_with(N, || generator.random::<u8>());
     data
 }

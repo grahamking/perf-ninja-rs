@@ -20,12 +20,12 @@ pub fn select(output: &mut [S; N], input: &[S; N], lower: u32, upper: u32) -> us
 }
 
 pub fn init() -> [S; N] {
-    let mut generator = thread_rng();
+    let mut generator = rand::rng();
 
     let mut arr = [(0, 0); N];
     for i in 0..N {
-        arr[i].0 = generator.gen();
-        arr[i].1 = generator.gen();
+        arr[i].0 = generator.random();
+        arr[i].1 = generator.random();
     }
 
     arr

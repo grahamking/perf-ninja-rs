@@ -8,7 +8,7 @@ name = "lab"
 harness= false
 
 [dependencies]
-rand = "0.8"
+rand = "0.10"
 
 [dev-dependencies]
 criterion = "0.5"

@@ -88,11 +88,11 @@ pub fn power(input: &Matrix, k: i32) -> Matrix {
 }
 
 pub fn init(matrix: &mut Matrix) {
-    use rand::distributions::Uniform;
+    use rand::distr::Uniform;
     use rand::prelude::*;
 
-    let mut generator = thread_rng();
-    let distribution = Uniform::from(-0.95f32..0.95f32);
+    let mut generator = rand::rng();
+    let distribution = Uniform::new(-0.95f32, 0.95f32).unwrap();
 
     for i in 0..N {
         let mut sum = 0f32;

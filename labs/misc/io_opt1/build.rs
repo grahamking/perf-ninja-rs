@@ -44,7 +44,7 @@ fn write_random_string(path: &Path, len: usize) {
     if path.exists() {
         return;
     }
-    let mut rng = thread_rng();
+    let mut rng = rand::rng();
     /* build scripts aren't allowed output
     println!(
         "Generating file with random contents of length {len}, this may take a few seconds..."

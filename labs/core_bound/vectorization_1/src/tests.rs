@@ -1,7 +1,5 @@
+use crate::{compute_alignment, init, AlignResult, Sequence, SEQUENCE_COUNT, SEQUENCE_SIZE};
 use std::cmp::max;
-use crate::{
-    compute_alignment, init, AlignResult, Sequence, SEQUENCE_COUNT, SEQUENCE_SIZE,
-};
 
 #[test]
 fn validate() {

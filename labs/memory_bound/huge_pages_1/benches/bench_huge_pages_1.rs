@@ -3,7 +3,7 @@
 use criterion::{criterion_group, criterion_main, Criterion, Throughput};
 
 use huge_pages_1::{allocator, generate_mesh, solution};
-use rand::distributions::{Distribution, Uniform};
+use rand::distr::{Distribution, Uniform};
 use rand::rngs::StdRng;
 use rand::SeedableRng;
 
@@ -25,7 +25,7 @@ fn bench1(c: &mut Criterion) {
     let mut lhs = Vec::with_capacity_in(2 * N_NODES as usize, alloc);
     lhs.resize(lhs.capacity(), 0.0);
     let mut prng = StdRng::seed_from_u64(SEED);
-    let dist = Uniform::from(0.0..42.0);
+    let dist = Uniform::new(0.0, 42.0).unwrap();
     for _ in 0..lhs.len() {
         lhs.push(dist.sample(&mut prng));
     }

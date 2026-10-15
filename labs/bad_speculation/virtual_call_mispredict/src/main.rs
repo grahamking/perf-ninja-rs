@@ -31,11 +31,11 @@ mod tests {
     }
 
     fn original_generate_objects() -> InstanceArray {
-        use rand::distributions::Uniform;
+        use rand::distr::Uniform;
         use rand::prelude::*;
 
         let mut generator = StdRng::seed_from_u64(0);
-        let distribution = Uniform::from(0..=2);
+        let distribution = Uniform::new_inclusive(0, 2).unwrap();
 
         let mut array: Vec<Box<dyn BaseClass>> = Vec::with_capacity(N);
         for _ in 0..N {

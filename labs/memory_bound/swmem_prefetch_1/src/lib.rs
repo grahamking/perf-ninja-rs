@@ -56,14 +56,14 @@ pub fn solution(hash_map: &HashMapT, lookups: &[i32]) -> i32 {
 
 pub fn init(hash_map: &mut HashMapT) -> Vec<i32> {
     use rand::prelude::*;
-    let mut generator = thread_rng();
+    let mut generator = rand::rng();
 
     for _ in 0..HASH_MAP_SIZE {
-        hash_map.insert(generator.gen());
+        hash_map.insert(generator.random());
     }
 
     let mut lookups = Vec::with_capacity(NUMBER_OF_LOOKUPS);
-    lookups.resize_with(NUMBER_OF_LOOKUPS, || generator.gen());
+    lookups.resize_with(NUMBER_OF_LOOKUPS, || generator.random());
 
     lookups
 }

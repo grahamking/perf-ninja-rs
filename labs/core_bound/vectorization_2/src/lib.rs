@@ -19,8 +19,8 @@ pub fn checksum(blob: &Blob) -> u16 {
 pub fn init(blob: &mut Blob) {
     use rand::prelude::*;
 
-    let mut generator = thread_rng();
+    let mut generator = rand::rng();
     for v in blob {
-        *v = generator.gen();
+        *v = generator.random();
     }
 }
